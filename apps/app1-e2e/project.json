@@ -21,9 +21,6 @@
           "devServerTarget": "app1:serve-static"
         }
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     }
   }
 }

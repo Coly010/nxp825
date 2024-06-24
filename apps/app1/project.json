@@ -64,9 +64,6 @@
         "reportsDirectory": "../../coverage/apps/app1"
       }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint"
-    },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
