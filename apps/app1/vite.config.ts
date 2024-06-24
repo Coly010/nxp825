@@ -3,6 +3,21 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
+// These options were migrated by @nx/vite:convert-to-inferred from the project.json file.
+const configValues = {
+  default: { buildLibsFromSource: true },
+  development: {},
+  production: { buildLibsFromSource: false },
+};
+
+// Determine the correct configValue to use based on the configuration
+const nxConfiguration = process.env.NX_TASK_TARGET_CONFIGURATION ?? 'default';
+
+const options = {
+  ...configValues.default,
+  ...(configValues[nxConfiguration] ?? {}),
+};
+
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/app1',
@@ -17,7 +32,10 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [
+    react(),
+    nxViteTsPaths({ buildLibsFromSource: options.buildLibsFromSource }),
+  ],
 
   // Uncomment this if you are using workers.
   // worker: {
