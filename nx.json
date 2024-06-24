@@ -97,6 +97,16 @@
         "staticStorybookTargetName": "static-storybook",
         "testStorybookTargetName": "test-storybook"
       }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "testTargetName": "test",
+        "serveStaticTargetName": "serve-static"
+      }
     }
   ]
 }

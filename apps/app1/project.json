@@ -6,62 +6,44 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{projectRoot}/{options.outDir}",
+        "{workspaceRoot}/dist/apps/app1"
+      ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/app1",
-        "buildLibsFromSource": true
+        "outDir": "../../dist/apps/app1"
       },
       "configurations": {
         "development": {
           "mode": "development"
         },
         "production": {
-          "mode": "production",
-          "buildLibsFromSource": false
+          "mode": "production"
         }
       }
     },
     "serve": {
-      "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "app1:build",
-        "buildLibsFromSource": true
-      },
       "configurations": {
-        "development": {
-          "buildTarget": "app1:build:development",
-          "hmr": true
-        },
-        "production": {
-          "buildTarget": "app1:build:production",
-          "hmr": false,
-          "buildLibsFromSource": false
-        }
+        "development": {},
+        "production": {}
       }
     },
     "preview": {
-      "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "app1:build"
-      },
       "configurations": {
-        "development": {
-          "buildTarget": "app1:build:development"
-        },
-        "production": {
-          "buildTarget": "app1:build:production"
-        }
+        "development": {},
+        "production": {}
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{projectRoot}/{options.coverage.reportsDirectory}",
+        "{workspaceRoot}/coverage/apps/app1"
+      ],
       "options": {
-        "reportsDirectory": "../../coverage/apps/app1"
+        "coverage.reportsDirectory": "../../coverage/apps/app1"
       }
     },
     "serve-static": {
