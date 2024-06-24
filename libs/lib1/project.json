@@ -6,24 +6,15 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/lib1",
-        "tsConfig": "libs/lib1/tsconfig.lib.json",
-        "project": "libs/lib1/package.json",
-        "entryFile": "libs/lib1/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "assets": [
-          {
-            "glob": "libs/lib1/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ]
-      }
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": [
+        "production",
+        "^production",
+        {
+          "externalDependencies": ["rollup"]
+        }
+      ]
     },
     "test": {
       "outputs": [

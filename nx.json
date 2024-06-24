@@ -43,7 +43,13 @@
     "@nx/rollup:rollup": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": [
+        "production",
+        "^production",
+        {
+          "externalDependencies": ["rollup"]
+        }
+      ]
     }
   },
   "namedInputs": {
@@ -115,6 +121,12 @@
         "ciTargetName": "e2e-ci",
         "openTargetName": "open-cypress",
         "componentTestingTargetName": "component-test"
+      }
+    },
+    {
+      "plugin": "@nx/rollup/plugin",
+      "options": {
+        "targetName": "build"
       }
     }
   ]
