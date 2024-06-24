@@ -107,6 +107,15 @@
         "testTargetName": "test",
         "serveStaticTargetName": "serve-static"
       }
+    },
+    {
+      "plugin": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e",
+        "ciTargetName": "e2e-ci",
+        "openTargetName": "open-cypress",
+        "componentTestingTargetName": "component-test"
+      }
     }
   ]
 }
