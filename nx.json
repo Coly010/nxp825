@@ -39,6 +39,11 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/rollup:rollup": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -59,14 +64,6 @@
     "sharedGlobals": []
   },
   "useInferencePlugins": false,
-  "plugins": [
-    {
-      "plugin": "@nx/rollup/plugin",
-      "options": {
-        "buildTargetName": "build"
-      }
-    }
-  ],
   "generators": {
     "@nx/react": {
       "application": {
